@@ -1,0 +1,28 @@
+"use client";
+
+import Link from "next/link";
+import { MessageCircle } from "lucide-react";
+import { company } from "@/data/company";
+
+export function WhatsAppButton() {
+  const href = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
+    "Hi Aarohan Solar, I’d like a solar consultation."
+  )}`;
+
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group fixed bottom-5 right-5 z-40 flex items-center gap-0 overflow-hidden rounded-full bg-[#1fad55] text-white shadow-[0_12px_32px_rgba(31,173,85,0.35)] transition hover:pr-5 sm:bottom-7 sm:right-7"
+      aria-label="Chat on WhatsApp"
+    >
+      <span className="flex h-14 w-14 items-center justify-center">
+        <MessageCircle className="h-7 w-7" fill="currentColor" />
+      </span>
+      <span className="max-w-0 overflow-hidden whitespace-nowrap text-sm font-semibold opacity-0 transition-all duration-300 group-hover:max-w-[140px] group-hover:opacity-100">
+        Chat with us
+      </span>
+    </Link>
+  );
+}

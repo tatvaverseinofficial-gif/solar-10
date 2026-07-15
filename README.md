@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aarohan Solar
 
-## Getting Started
+Premium Next.js 15 website for an Indian solar energy company — portfolio-ready and easy to rebrand for client projects.
 
-First, run the development server:
+## Stack
+
+- Next.js 15 (App Router) + TypeScript
+- Tailwind CSS v4
+- Framer Motion
+- Lucide Icons + shadcn-style UI primitives
+- Mock JSON data (Supabase-ready structure)
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Admin (no auth yet): [http://localhost:3000/admin](http://localhost:3000/admin)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Admin mode
 
-## Learn More
+| Setting | Behaviour |
+|---|---|
+| `DEMO=true` | Admin is **view-only** (Add / Edit / Save disabled) |
+| `DEMO=false` | Admin **edit mode** — mutations go through a **mock Supabase** client |
 
-To learn more about Next.js, take a look at the following resources:
+Copy `.env.example` → `.env`, then restart the dev server after changing `DEMO`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# View only (default)
+DEMO=true
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Editable + mock Supabase
+DEMO=false
+```
 
-## Deploy on Vercel
+Mock Supabase lives in `src/lib/supabase/client.ts`. When ready, plug in:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Customize for a client
+
+1. Edit `src/data/company.ts` — name, phone, address, stats
+2. Replace images under `public/images/`
+3. Update mock content in `src/data/*.ts`
+4. Point `company.website` to the live domain for SEO
+
+## Scripts
+
+- `npm run dev` — development
+- `npm run build` — production build
+- `npm run start` — serve production build
