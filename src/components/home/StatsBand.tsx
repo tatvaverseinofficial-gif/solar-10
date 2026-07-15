@@ -37,11 +37,11 @@ function StatItem({
 }) {
   const count = useCountUp(numeric ?? 0, 1800, start && numeric !== undefined);
   return (
-    <div className="relative px-2 text-center md:px-4">
-      <p className="font-display text-3xl font-bold tracking-tight text-solar-yellow md:text-4xl lg:text-[2.85rem]">
+    <div className="relative px-1 text-center sm:px-2 md:px-4">
+      <p className="font-display text-2xl font-bold tracking-tight text-solar-yellow sm:text-3xl md:text-4xl lg:text-[2.85rem]">
         {display ?? `${count.toLocaleString("en-IN")}${suffix ?? ""}`}
       </p>
-      <p className="mt-2.5 text-xs font-medium uppercase tracking-[0.14em] text-white/55 md:text-[0.7rem]">
+      <p className="mt-2 text-[0.65rem] font-medium uppercase leading-snug tracking-[0.1em] text-white/55 sm:mt-2.5 sm:text-xs sm:tracking-[0.14em] md:text-[0.7rem]">
         {label}
       </p>
     </div>
@@ -66,12 +66,12 @@ export function StatsBand() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-solar-navy py-16 md:py-20">
+    <section className="relative overflow-hidden bg-solar-navy py-12 sm:py-16 md:py-20">
       <div className="pointer-events-none absolute inset-0 mesh-pattern opacity-15" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-24 w-1/2 -translate-x-1/2 bg-solar-yellow/10 blur-3xl" />
       <div className="container-premium relative" ref={ref}>
         <FadeIn>
-          <div className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-6 md:divide-x md:divide-white/10">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-10 md:grid-cols-4 md:gap-6 md:divide-x md:divide-white/10">
             <StatItem label="Installations" numeric={2500} suffix="+" start={start} />
             <StatItem label="Capacity Delivered" display={company.stats.capacityMw} start={start} />
             <StatItem label="Cities Served" numeric={40} suffix="+" start={start} />

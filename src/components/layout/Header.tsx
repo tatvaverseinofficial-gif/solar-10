@@ -61,6 +61,12 @@ export function Header() {
     setMegaOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    document.body.classList.add("nav-locked");
+    return () => document.body.classList.remove("nav-locked");
+  }, [mobileOpen]);
+
   const linkIdle = scrolled
     ? "text-muted-foreground hover:text-solar-navy"
     : "text-white/80 hover:text-white";
@@ -75,14 +81,14 @@ export function Header() {
           : "bg-transparent"
       )}
     >
-      <div className="container-premium flex h-[4.25rem] items-center justify-between md:h-[5rem]">
-        <Link href="/" className="group flex items-center gap-2.5">
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-solar-yellow text-solar-navy-deep shadow-[var(--shadow-glow)] transition duration-300 group-hover:scale-105">
-            <Sun className="h-5 w-5" strokeWidth={2.5} />
+      <div className="container-premium flex h-[3.75rem] items-center justify-between gap-3 sm:h-[4.25rem] md:h-[5rem]">
+        <Link href="/" className="group flex min-w-0 items-center gap-2 sm:gap-2.5">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-solar-yellow text-solar-navy-deep shadow-[var(--shadow-glow)] transition duration-300 group-hover:scale-105 sm:h-10 sm:w-10 sm:rounded-2xl">
+            <Sun className="h-4.5 w-4.5 sm:h-5 sm:w-5" strokeWidth={2.5} />
           </span>
           <span
             className={cn(
-              "font-display text-lg font-bold tracking-tight md:text-xl transition-colors",
+              "font-display truncate text-base font-bold tracking-tight sm:text-lg md:text-xl transition-colors",
               scrolled ? "text-solar-navy" : "text-white"
             )}
           >
@@ -223,7 +229,7 @@ export function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="absolute right-0 top-0 flex h-full w-[min(100%,380px)] flex-col bg-white shadow-[var(--shadow-lg)]"
+              className="absolute right-0 top-0 flex h-full w-[min(100%,100vw)] flex-col bg-white shadow-[var(--shadow-lg)] sm:w-[min(100%,380px)] pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between border-b border-solar-line px-5 py-5">

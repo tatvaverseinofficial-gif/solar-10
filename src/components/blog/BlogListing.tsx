@@ -18,7 +18,7 @@ export function BlogListing() {
   );
 
   const chip = (active: boolean) =>
-    `rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+    `rounded-full px-4 py-2.5 text-sm font-semibold transition sm:px-5 ${
       active
         ? "bg-solar-navy text-white shadow-[var(--shadow-sm)]"
         : "border border-solar-line bg-white text-muted-foreground hover:border-solar-navy/30 hover:text-solar-navy"
@@ -26,7 +26,7 @@ export function BlogListing() {
 
   return (
     <div>
-      <div className="mb-12 flex flex-wrap justify-center gap-2.5">
+      <div className="chip-scroll mb-8 justify-start sm:mb-12 sm:justify-center">
         <button type="button" onClick={() => setCategory("all")} className={chip(category === "all")}>
           All
         </button>
@@ -53,7 +53,7 @@ export function BlogListing() {
           >
             <div
               className={`relative overflow-hidden ${
-                index === 0 && category === "all" ? "aspect-[21/9] md:aspect-[21/8]" : "aspect-[16/10]"
+                index === 0 && category === "all" ? "aspect-[16/10] md:aspect-[21/8]" : "aspect-[16/10]"
               }`}
             >
               <Image

@@ -64,7 +64,7 @@ export function ServicesOverview() {
                       <Icon className="h-5 w-5" />
                     </span>
                   </div>
-                  <div className="flex flex-1 flex-col p-6 md:p-7">
+                  <div className="flex flex-1 flex-col p-5 sm:p-6 md:p-7">
                     <h3 className="font-display text-xl font-bold text-solar-navy">
                       {service.title}
                     </h3>

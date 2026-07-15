@@ -25,7 +25,7 @@ export function FAQFilter() {
 
   return (
     <div>
-      <div className="mb-8 flex flex-wrap justify-center gap-2">
+      <div className="chip-scroll mb-8 justify-start sm:justify-center">
         {categories.map((c) => (
           <button
             key={c.value}
@@ -41,7 +41,7 @@ export function FAQFilter() {
           </button>
         ))}
       </div>
-      <div className="mx-auto max-w-3xl rounded-[1.75rem] border border-solar-line bg-white px-5 shadow-[var(--shadow-sm)] md:px-9">
+      <div className="mx-auto max-w-3xl rounded-[1.25rem] border border-solar-line bg-white px-4 shadow-[var(--shadow-sm)] sm:rounded-[1.75rem] sm:px-5 md:px-9">
         <FAQAccordion items={items} />
       </div>
     </div>

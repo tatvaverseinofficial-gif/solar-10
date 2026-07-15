@@ -25,9 +25,9 @@ export function SolarCalculator() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
-      <div className="rounded-[1.75rem] border border-solar-line bg-white p-6 shadow-[var(--shadow-md)] md:p-9">
+      <div className="rounded-[1.25rem] border border-solar-line bg-white p-5 shadow-[var(--shadow-md)] sm:rounded-[1.75rem] sm:p-6 md:p-9">
         <p className="eyebrow text-solar-blue">Demo calculator</p>
-        <h2 className="mt-3 font-display text-2xl font-bold text-solar-navy md:text-3xl">
+        <h2 className="mt-3 font-display text-xl font-bold text-solar-navy sm:text-2xl md:text-3xl">
           Estimate your solar savings
         </h2>
         <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
@@ -36,22 +36,23 @@ export function SolarCalculator() {
 
         <div className="mt-9 space-y-7">
           <div>
-            <div className="mb-2 flex items-end justify-between">
+            <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
               <Label htmlFor="bill">Monthly electricity bill</Label>
-              <span className="font-display text-lg font-bold text-solar-navy">
+              <span className="font-display text-base font-bold text-solar-navy sm:text-lg">
                 {formatCurrency(monthlyBill)}
               </span>
             </div>
             <Input
               id="bill"
               type="number"
+              inputMode="numeric"
               min={500}
               max={500000}
               value={monthlyBill}
               onChange={(e) => setMonthlyBill(Number(e.target.value) || 0)}
             />
-            <div className="relative mt-4">
-              <div className="h-2 overflow-hidden rounded-full bg-solar-mist">
+            <div className="relative mt-3">
+              <div className="h-2.5 overflow-hidden rounded-full bg-solar-mist">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-solar-yellow to-solar-gold transition-all duration-300"
                   style={{ width: `${billProgress}%` }}
@@ -64,7 +65,7 @@ export function SolarCalculator() {
                 step={500}
                 value={Math.min(monthlyBill, 50000)}
                 onChange={(e) => setMonthlyBill(Number(e.target.value))}
-                className="absolute inset-0 h-2 w-full cursor-pointer opacity-0"
+                className="touch-range absolute inset-x-0 top-1/2 w-full -translate-y-1/2 cursor-pointer opacity-0"
                 aria-label="Adjust monthly bill"
               />
             </div>
@@ -85,7 +86,7 @@ export function SolarCalculator() {
                   key={value}
                   type="button"
                   onClick={() => setPropertyType(value)}
-                  className={`rounded-2xl border px-3 py-3 text-sm font-semibold transition ${
+                  className={`min-h-11 rounded-2xl border px-2 py-3 text-xs font-semibold transition sm:px-3 sm:text-sm ${
                     propertyType === value
                       ? "border-solar-navy bg-solar-navy text-white shadow-[var(--shadow-sm)]"
                       : "border-solar-line bg-white text-muted-foreground hover:border-solar-blue/35 hover:text-solar-navy"
@@ -112,7 +113,7 @@ export function SolarCalculator() {
                   key={value}
                   type="button"
                   onClick={() => setRoofType(value)}
-                  className={`rounded-2xl border px-3 py-3 text-sm font-semibold transition ${
+                  className={`min-h-11 rounded-2xl border px-2 py-3 text-xs font-semibold transition sm:px-3 sm:text-sm ${
                     roofType === value
                       ? "border-solar-yellow bg-solar-cream text-solar-navy"
                       : "border-solar-line bg-white text-muted-foreground hover:border-solar-yellow/50"
@@ -126,7 +127,7 @@ export function SolarCalculator() {
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-[1.75rem] bg-solar-navy p-6 text-white shadow-[var(--shadow-lg)] md:p-9">
+      <div className="relative overflow-hidden rounded-[1.25rem] bg-solar-navy p-5 text-white shadow-[var(--shadow-lg)] sm:rounded-[1.75rem] sm:p-6 md:p-9">
         <div className="pointer-events-none absolute -right-16 top-0 h-48 w-48 rounded-full bg-solar-yellow/20 blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-40 rounded-full bg-solar-green/20 blur-3xl" />
 
@@ -211,9 +212,9 @@ function ResultCard({
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between gap-4">
-      <span className="text-white/60">{label}</span>
-      <span className="font-semibold tracking-tight">{value}</span>
+    <div className="flex flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+      <span className="text-xs text-white/60 sm:text-sm">{label}</span>
+      <span className="font-semibold tracking-tight text-sm sm:text-base">{value}</span>
     </div>
   );
 }

@@ -36,7 +36,7 @@ export function SavingsSection() {
       <div className="pointer-events-none absolute right-0 top-20 h-72 w-72 rounded-full bg-solar-green-soft blur-3xl" />
       <div className="container-premium relative grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <FadeIn>
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-[var(--shadow-lg)] md:aspect-[5/4] lg:aspect-[4/5]">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] shadow-[var(--shadow-lg)] sm:rounded-[1.75rem] md:aspect-[5/4] lg:aspect-[4/5]">
             <Image
               src="/images/hero/hero-secondary.jpg"
               alt="Solar panels catching sunlight on a rooftop"
@@ -45,12 +45,12 @@ export function SavingsSection() {
               sizes="(max-width:1024px) 100vw, 50vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-solar-navy-deep/40 via-transparent to-transparent" />
-            <div className="absolute inset-x-5 bottom-5 rounded-2xl glass p-5 md:inset-x-7 md:bottom-7 md:p-6">
+            <div className="absolute inset-x-3 bottom-3 rounded-xl glass p-4 sm:inset-x-5 sm:bottom-5 sm:rounded-2xl sm:p-5 md:inset-x-7 md:bottom-7 md:p-6">
               <p className="eyebrow text-solar-blue">Typical residential outcome</p>
-              <p className="mt-2 font-display text-2xl font-bold text-solar-navy md:text-3xl">
+              <p className="mt-1.5 font-display text-xl font-bold text-solar-navy sm:mt-2 sm:text-2xl md:text-3xl">
                 ₹4,000–₹8,000 saved / month
               </p>
-              <p className="mt-1.5 text-sm text-muted-foreground">
+              <p className="mt-1 text-xs text-muted-foreground sm:mt-1.5 sm:text-sm">
                 Based on 3–5 kW systems in high-tariff urban areas. Actual results vary.
               </p>
             </div>

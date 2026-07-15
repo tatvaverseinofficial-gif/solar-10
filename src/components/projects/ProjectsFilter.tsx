@@ -26,13 +26,13 @@ export function ProjectsFilter() {
 
   return (
     <div>
-      <div className="mb-10 flex flex-wrap justify-center gap-2">
+      <div className="chip-scroll mb-8 justify-start sm:mb-10 sm:justify-center">
         {filters.map((f) => (
           <button
             key={f.value}
             type="button"
             onClick={() => setFilter(f.value)}
-            className={`rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+            className={`rounded-full px-4 py-2.5 text-sm font-semibold transition sm:px-5 ${
               filter === f.value
                 ? "bg-solar-navy text-white shadow-[var(--shadow-sm)]"
                 : "border border-solar-line bg-white text-muted-foreground hover:border-solar-navy/30 hover:text-solar-navy"

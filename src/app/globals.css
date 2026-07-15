@@ -92,10 +92,12 @@
 
 * {
   border-color: var(--border);
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -107,6 +109,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body.nav-locked {
+  overflow: hidden;
+  touch-action: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -130,12 +138,21 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   max-width: 1180px;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 480px) {
+  .container-premium {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
 }
 
 @media (min-width: 768px) {
   .container-premium {
-    padding-inline: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
@@ -203,10 +220,12 @@ h1, h2, h3, h4, h5, h6 {
     border-color 0.35s ease;
 }
 
-.card-premium:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: color-mix(in oklab, var(--solar-blue) 22%, var(--border));
+@media (hover: hover) and (pointer: fine) {
+  .card-premium:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: color-mix(in oklab, var(--solar-blue) 22%, var(--border));
+  }
 }
 
 .btn-shine {
@@ -233,7 +252,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-pad {
-  padding-block: 5rem;
+  padding-block: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .section-pad {
+    padding-block: 5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -243,10 +268,54 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .eyebrow {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+@media (min-width: 640px) {
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+  }
+}
+
+/* Horizontal chip / filter scroller for phones */
+.chip-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+  margin-inline: -0.25rem;
+  padding-inline: 0.25rem;
+}
+
+.chip-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.chip-scroll > * {
+  flex: 0 0 auto;
+}
+
+@media (min-width: 640px) {
+  .chip-scroll {
+    flex-wrap: wrap;
+    overflow: visible;
+    justify-content: center;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+/* Touch-friendly range / interactive controls */
+.touch-range {
+  height: 2.75rem;
+  margin-block: -0.85rem;
 }
 
 .divider-glow {

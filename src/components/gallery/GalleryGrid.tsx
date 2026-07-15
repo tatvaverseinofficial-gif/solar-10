@@ -29,13 +29,13 @@ export function GalleryGrid() {
 
   return (
     <>
-      <div className="mb-10 flex flex-wrap justify-center gap-2">
+      <div className="chip-scroll mb-8 justify-start sm:mb-10 sm:justify-center">
         {filters.map((f) => (
           <button
             key={f.value}
             type="button"
             onClick={() => setFilter(f.value)}
-            className={`rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+            className={`rounded-full px-4 py-2.5 text-sm font-semibold transition sm:px-5 ${
               filter === f.value
                 ? "bg-solar-navy text-white shadow-[var(--shadow-sm)]"
                 : "border border-solar-line bg-white text-muted-foreground hover:border-solar-navy/30 hover:text-solar-navy"
@@ -85,12 +85,12 @@ export function GalleryGrid() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] flex items-center justify-center bg-solar-navy-deep/90 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-[70] flex items-end justify-center bg-solar-navy-deep/90 p-0 backdrop-blur-sm sm:items-center sm:p-4"
             onClick={() => setActive(null)}
           >
             <button
               type="button"
-              className="absolute right-5 top-5 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
+              className="absolute right-4 top-[max(1rem,env(safe-area-inset-top))] rounded-full bg-white/10 p-2.5 text-white hover:bg-white/20 sm:right-5 sm:top-5"
               onClick={() => setActive(null)}
               aria-label="Close lightbox"
             >
@@ -100,10 +100,10 @@ export function GalleryGrid() {
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
-              className="relative w-full max-w-5xl overflow-hidden rounded-2xl"
+              className="relative w-full max-w-5xl overflow-hidden rounded-t-3xl sm:rounded-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative aspect-[16/10] w-full">
+              <div className="relative aspect-[4/3] w-full sm:aspect-[16/10]">
                 <Image
                   src={active.image}
                   alt={active.title}
@@ -112,7 +112,7 @@ export function GalleryGrid() {
                   sizes="100vw"
                 />
               </div>
-              <div className="bg-white p-5">
+              <div className="bg-white p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:p-5">
                 <h3 className="font-display text-xl font-bold text-solar-navy">
                   {active.title}
                 </h3>
